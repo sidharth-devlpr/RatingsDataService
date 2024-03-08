@@ -20,12 +20,25 @@ public class RatingsDataController {
     }*/
     @GetMapping("/{userId}")
     public UserRating getMovieRatings(@PathVariable String userId){
-        List<Rating> ratings = Arrays.asList(
-                new Rating("101",4),
-                new Rating("102",3)
+        List<Rating> sidharthsList = Arrays.asList(
+                new Rating("72",4),
+                new Rating("73",3)
         );
-        UserRating userRating = new UserRating();
-        userRating.setUserRating(ratings);
-        return userRating;
+        List<Rating> kaushiksList = Arrays.asList(
+                new Rating("1",4),
+                new Rating("2",5)
+        );
+        if (userId.equals("sidharth")){
+            UserRating userRating = new UserRating();
+            userRating.setUserRating(sidharthsList);
+            return userRating;
+        } else if (userId.equals("kaushik")) {
+            UserRating userRating = new UserRating();
+            userRating.setUserRating(kaushiksList);
+            return userRating;
+        }
+        else {
+            return new UserRating();
+        }
     }
 }
